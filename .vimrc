@@ -37,14 +37,15 @@ Plug 'editorconfig/editorconfig-vim', { 'for': 'editorconfig' }
 " filetype javascript 
 Plug 'moll/vim-node', { 'for': 'javascript' }
 Plug 'isruslan/vim-es6', { 'for': 'javascript' }
-Plug 'prettier/vim-prettier', { 'for': 'javascript' }
+Plug 'prettier/vim-prettier'
+let g:prettier#exec_cmd_path = "/opt/homebrew/bin/prettierd"
 
 " filetype css / scss
-Plug 'prettier/vim-prettier', { 'for': 'css' }
-Plug 'prettier/vim-prettier', { 'for': 'scss' }
+" Plug 'prettier/vim-prettier', { 'for': 'css' }
+" Plug 'prettier/vim-prettier', { 'for': 'scss' }
 
 " filetype json
-Plug 'prettier/vim-prettier', { 'for': 'json' }
+" Plug 'prettier/vim-prettier', { 'for': 'json' }
 
 " filetype rust
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }

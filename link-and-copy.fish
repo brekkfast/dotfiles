@@ -1,3 +1,5 @@
+#!/opt/homebrew/bin/fish
+
 echo "symlinking... 🔗"
 ln -s ~/work/dotfiles/config.fish ~/.config/fish/config.fish
 ln -s ~/work/dotfiles/.vimrc ~/.vimrc

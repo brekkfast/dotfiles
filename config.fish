@@ -41,9 +41,9 @@ alias vi="nvim"
 
 # the best editor on the planet
 
-# alias vivify="vi ~/work/dotfiles/.vimrc"
-alias nivify="ni ~/.config/nvim/init.vim"
-alias vivify="nivify"
+alias vivify="vi ~/.config/nvim/init.lua"
+# alias nivify="ni ~/.config/nvim/init.vim"
+# alias vivify="nivify"
 
 # git
 
@@ -81,10 +81,10 @@ if not functions -q bat
   alias ccat="cat"
   alias cat="bat --tabs=2"
 end
-if not functions -q exa
-  alias ls=exa
-  alias ll='exa --all --long --header --grid --ignore-glob="*.un~|*node_modules|*.git*" --git-ignore'
-  alias lx='exa --all --long --header --grid --ignore-glob="*.un~|*node_modules"'
+if not functions -q eza
+  alias ls=eza
+  alias ll='eza --all --long --header --grid --ignore-glob="*.un~|*node_modules|*.git*" --git-ignore'
+  alias lx='eza --all --long --header --grid --ignore-glob="*.un~|*node_modules"'
 else
   alias ll="ls -Agplash"
 end
@@ -199,7 +199,7 @@ function kaldiff --description 'compare shit'
   git difftool -y -t Kaleidoscope $argv[1] $argv[2]
 end
 
-source ~/.iterm2_shell_integration.(basename $SHELL)
+#source ~/.iterm2_shell_integration.(basename $SHELL)
 
 function gitsplit --description 'checkout a fresh copy'
   git checkout $argv[1]
@@ -211,3 +211,23 @@ alias mastersplit='gitsplit master'
 
 alias 'tofix'="snang -P 'lines | filter(includes(\'both modified\')) | map(split(C._)) | map(filter(I)) | map(last) | join(C._)'"
 alias squeal='docker exec -it ironfish_postgres psql -U postgres'
+
+# fishy pathing
+# https://superuser.com/questions/776008/how-to-remove-a-path-from-path-variable-in-fish
+
+function addpaths
+    contains -- $argv $fish_user_paths
+       or set -U fish_user_paths $fish_user_paths $argv
+    echo "Updated PATH: $PATH"
+end
+
+function removepath
+    if set -l index (contains -i $argv[1] $PATH)
+        set --erase --universal fish_user_paths[$index]
+        echo "Updated PATH: $PATH"
+    else
+        echo "$argv[1] not found in PATH: $PATH"
+    end
+end
+
+# funcsave addpaths; funcsave removepath

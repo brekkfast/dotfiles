@@ -15,8 +15,8 @@ echo "bat - 🦇"
 brew install bat
 echo "fd - 🔍"
 brew install fd 
-echo "exa - 🗂"
-brew install exa
+echo "eza - 🗂"
+brew install eza
 echo "ripgrep - 🔬"
 brew install ripgrep
 echo "thefuck - 💢"
